@@ -7,7 +7,12 @@ const connectDB = require('./src/config/db');
 dotenv.config();
 connectDB();
 
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5173", 
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true 
+}));
 
 const PORT = process.env.PORT || 3000;
 
