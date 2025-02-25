@@ -76,4 +76,13 @@ const deleteBooking = async (req, res) => {
     }
 };
 
-module.exports = { createBooking, getAllBookings, getBookingById, updateBookingStatus, deleteBooking };
+const getAllBookingByUserId = async (req, res) => {
+    try {
+        const bookings = await Booking.find({ user: req.user.id }).populate('car');
+        res.status(200).json(bookings);
+    } catch (err) {
+        res.status(500).json({ message: 'Error fetching bookings', error: err.message });
+    }
+};
+
+module.exports = { createBooking, getAllBookings, getBookingById, updateBookingStatus, deleteBooking, getAllBookingByUserId };

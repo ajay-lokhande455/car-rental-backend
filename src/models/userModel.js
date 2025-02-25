@@ -35,12 +35,10 @@ const userSchema = new mongoose.Schema({
     },
     licenseNumber: {
         type: String,
-        required: [true, 'License number is required'],
         unique: true
     },
     address: {
         type: String,
-        required: [true, 'Address is required']
     },
     createdAt: {
         type: Date,
