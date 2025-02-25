@@ -7,11 +7,13 @@ const connectDB = require('./src/config/db');
 dotenv.config();
 connectDB();
 
+app.use(cors())
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use(cors());
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
