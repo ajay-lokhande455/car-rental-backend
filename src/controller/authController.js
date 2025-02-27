@@ -23,8 +23,6 @@ const register = async (req, res) => {
             username,
             password: hashedPassword,
             role,
-            address,
-            licenseNumber
         });
 
         await newUser.save();
