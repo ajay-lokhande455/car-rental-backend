@@ -11,7 +11,7 @@ const router = express.Router();
 const cors = require('cors');
 
 app.use(express.json())
-router.use(cors());
+app.use(cors());
 app.use('/auth', authRoutes)
 app.use('/user', userRoutes)
 app.use('/booking', bookingsRoutes)
