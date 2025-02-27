@@ -2,6 +2,8 @@ const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const User = mongoose.model('User', userSchema);
+
 const register = async (req, res) => {
     try {
         const { name, email, phone, username, password, role, address, licenseNumber } = req.body;
@@ -23,10 +25,12 @@ const register = async (req, res) => {
             username,
             password: hashedPassword,
             role,
+            address,
+            licenseNumber
         });
 
         await newUser.save();
-        res.status(201).json({ message: 'User created successfully', newUser });
+        res.status(201).json({ message: 'User created successfully', user: newUser });
 
     } catch (err) {
         res.status(500).json({ message: 'Error creating user', error: err.message });
