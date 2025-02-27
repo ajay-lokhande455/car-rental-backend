@@ -35,8 +35,6 @@ const userSchema = new mongoose.Schema({
     },
     licenseNumber: {
         type: String,
-        unique: true,
-        sparse: true
     },
     address: {
         type: String,
