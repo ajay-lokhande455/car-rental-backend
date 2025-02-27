@@ -7,7 +7,7 @@ const register = async (req, res) => {
         const { name, email, phone, username, password, role, address, licenseNumber } = req.body;
 
         const existingUser = await User.findOne({
-            $or: [{ email }, { phone }, { username }, { licenseNumber }]
+            $or: [{ email }, { phone }, { username }]
         });
 
         if (existingUser) {
